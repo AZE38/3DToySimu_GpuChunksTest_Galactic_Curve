@@ -525,7 +525,7 @@ function updateGalaxyGPULP(stars, deltaTime, G, densityNeg, boundaryRadius) {
         stars[i].updatePositionLP(deltaTime, forceNowX[i], forceNowY[i],forceNowZ[i],boundaryRadius);
  
      }
-     console.log("star posi",stars)
+     //console.log("star posi",stars)
 
 
 
@@ -601,9 +601,9 @@ function updateGalaxyGPULP(stars, deltaTime, G, densityNeg, boundaryRadius) {
         
     
 
-    console.log("forcesX", forcesX2);
-    console.log("forcesY", forcesY2);
-    console.log("forcesZ", forcesZ2);
+   // console.log("forcesX", forcesX2);
+    //console.log("forcesY", forcesY2);
+    //console.log("forcesZ", forcesZ2);
 
     
     // Update the stars array with new positions and velocities cpu
@@ -642,7 +642,7 @@ async function updateGalaxyGPULPReplay(stars, deltaTime, G, densityNeg, boundary
      }
      ReplayArray.push(stepReplayArray)
 
-     console.log("ReplayArray",ReplayArray)
+     //console.log("ReplayArray",ReplayArray)
 
 
 
@@ -680,7 +680,7 @@ async function updateGalaxyGPULPReplay(stars, deltaTime, G, densityNeg, boundary
         forcesY =  forcesY.concat(foryy);
         forcesZ = forcesZ.concat(forzz);
     }
-    console.log("forcesX", forcesX);*/
+    //console.log("forcesX", forcesX);*/
     let forcesX = []
     let forcesY = []
     let forcesZ = []
@@ -749,7 +749,7 @@ async function updateGalaxyGPULPReplay(stars, deltaTime, G, densityNeg, boundary
        stepReplayVelocity.push(arrayStarVel)
     }
     VelocityReplay.push(stepReplayVelocity)
-    console.log("VelocityReplay",VelocityReplay)
+    //console.log("VelocityReplay",VelocityReplay)
 
     forceNowX = forcesX;
     forceNowY = forcesY;
@@ -758,11 +758,11 @@ async function updateGalaxyGPULPReplay(stars, deltaTime, G, densityNeg, boundary
 
     // Check if we need to save to file and clear arrays
     if (stepNow % MAX_ENTRIES == 0 && stepNow!=0 ) {
-        console.log("enter in the condition saving for max entry 10")
+        //console.log("enter in the condition saving for max entry 10")
         entries_index=0
         saveDataAndClearArrays(function() {
             // After save callback
-            console.log('Data saved and arrays cleared.');
+            //console.log('Data saved and arrays cleared.');
         });
          //ReplayArray=[]
          //VelocityReplay=[]
@@ -1216,7 +1216,7 @@ function initSimulation() {
     const starPositionsY = stars.map(star => star.posY);
     const starPositionsZ = stars.map(star => star.posZ);
     console.log("first compute kernel calcul on init : START")
-    console.log("stars",stars)
+    //console.log("stars",stars)
     //forceNow = computeForcesKernel(starMasses, starPositionsX, starPositionsY,starPositionsZ, G, densityNeg)
 
 
@@ -1242,7 +1242,7 @@ function initSimulation() {
         chunckN2++
         forceNow = computeForcesKernel2(forceNow1,forceNow2)
 
-        console.log("forceNow",forceNow)
+       // console.log("forceNow",forceNow)
         forceNew = forceNow
 
         let forX= forceNow.map(forceNow => forceNow[0])
@@ -1269,7 +1269,7 @@ function initSimulation() {
         let SubPosY2 = starPositionsY.slice(halfLength);
         let SubPosZ2 = starPositionsZ.slice(halfLength);
         
-        console.log("iciii",starMasses.length )
+        //console.log("iciii",starMasses.length )
 
         let forcesT = computeForcesKernel(SubMasses, SubPosX, SubPosY, SubPosZ,SubMasses, SubPosX, SubPosY, SubPosZ, G, densityNeg);
 
@@ -1384,7 +1384,7 @@ let stepNow=0
 let isFinished= false
 function RunSimuWorker(){
     
-    console.log('totalstep',timestep)
+    //console.log('totalstep',timestep)
 
     if (animationFrameId3) {
         cancelAnimationFrame(animationFrameId3);
@@ -1401,11 +1401,11 @@ function RunSimuWorker(){
 
 
     if (stepNow < timestep){
-        console.log("stepNow",stepNow)
+       // console.log("stepNow",stepNow)
         updateGalaxyGPULPReplay(stars, deltaTime, G, densityNeg, Radius_SImulation)
     } else{
         if(isFinished== false){
-        console.log("FINISHED ")
+        //console.log("FINISHED ")
         isFinished = true
     }
         
