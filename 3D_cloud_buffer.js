@@ -928,7 +928,7 @@ var params = {
     Radius_SImulation: 500,
     scale: 0.0005,
     deltaTime: 0.002, // deltatime simulation in Giga years
-    numStarsNeg: 150000,
+    numStarsNeg: 100000,
     numStarsPos:20000,
     densityNeg: -0.1*Math.pow(10,5), // solar mass / ly^3 (density mass of nega stars)
     TotmassPos: 5*Math.pow(10,11), // ~ milky way solar mass (total mass of the galaxy)
